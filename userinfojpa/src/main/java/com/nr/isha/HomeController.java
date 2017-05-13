@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nr.isha.hibernate.repository.UserInterface;
 import com.nr.isha.service.UserService;
 
  
@@ -23,7 +24,8 @@ public class HomeController {
 
 	@Autowired
 	UserService userService;
-	
+	/*@Autowired
+	UserInterface userInterface;*/
 	 
 	 @RequestMapping(value = "/hello1")  
 	 	 public List<User> getTopic(){
@@ -45,18 +47,20 @@ public class HomeController {
 	 @RequestMapping(method=RequestMethod.GET, value="/hello1/{name}/{password}")
 	 public ResponseEntity<?> isUserExist(@PathVariable("name")String name,@PathVariable("password")String password){
 		 //System.out.println("HomeController->"+user);
-		boolean findname= userService.isUserExistName(name);
-		boolean findpassword=userService.isUserExistPassword(password);
+		 
+		/*User u= userService.isUserExistName(name,password);
+		 
 		System.out.println("user and passwod is existed");
 		 
-		
+		*/
+		  User u=userService.findUser(name, password);
 		 
-		if(!findname&&!findpassword){
+		if(u==null){
 			 
 		 return new ResponseEntity("Unable to upate. User with id " + name+password + " not found.",HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity<User>(HttpStatus.OK); 
+		return new ResponseEntity<User>(u,HttpStatus.OK); 
 		
 	 }
 	 

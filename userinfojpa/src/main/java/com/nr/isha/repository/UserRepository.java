@@ -9,4 +9,6 @@ import com.nr.isha.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	User findByName(String name);
+	
+	 
 }
