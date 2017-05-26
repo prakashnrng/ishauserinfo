@@ -20,6 +20,7 @@ myApp.controller("loginController",['$log','$scope','localService','$http',funct
 	self.ErrorMessage='';
 	self.DonorsList = [];
 	self.createDonor=createDonor;
+	self.updateDonor=updateDonor;
 	self.successMessage = '';
     self.errorMessage = '';
 	self.onlyNumbers = /^\d+([,.]\d+)?$/;
@@ -81,7 +82,23 @@ myApp.controller("loginController",['$log','$scope','localService','$http',funct
                      self.successMessage='';*/
                  }
              );
-     }
+     };
+	 
+	 function updateDonor() {
+		 console.log('update donor');
+		 console.log(self.donar_info);
+		 localService.updateDonor(self.donar_info)
+		   .then(
+	          function (response){
+	        	  console.log('donor updated successfully');
+	        	  self.successMessage = 'Donor updated successfully';
+	          },
+	          function(errResponse) {
+	        	  console.error('Error while creating donor');
+	          }
+				   );
+	 };
+	 
          
         
   
