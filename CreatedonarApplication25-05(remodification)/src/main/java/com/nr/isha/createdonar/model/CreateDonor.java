@@ -26,12 +26,12 @@ public class CreateDonor implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long consumerCode;
 	
-	@Size(min=8,max=40)
+	
+	 
 	@NotEmpty
 	@Column(name="donorfirstname")
 	private String donorfirstname;
-	
-	@Size(min=4,max=40)
+	 
 	@NotEmpty
 	@Column(name="donorlastname")
 	private String donorlastname;
@@ -57,14 +57,12 @@ public class CreateDonor implements Serializable{
  	private Double micr;
 	
 	@NotEmpty
-	@Size(min=11)
 	@Column(name="bankdetailsIFSCCode")
 	private String bankDetailsIFSCCode;
 	
 	@NotEmpty
 	@Email
-	@Size(min=10,max=40)
-	@Column(name="donoremail")
+	 @Column(name="donoremail")
 	private String donoremail;
 	
 	
@@ -84,13 +82,11 @@ public class CreateDonor implements Serializable{
 	Double paymentDetailsAmountInRs;
 	
 	@NotNull
-	@Size(max=10)
 	@Column(name="paymentdetailsfrequency")
 	String paymentDetailsFrequency;
 	
 	
 	@NotEmpty
-	@Size(max=40)
 	@Column(name="donoraddress")
 	private String donorAddress;
 	
@@ -112,16 +108,13 @@ public class CreateDonor implements Serializable{
 
 	 
 	
-	@NotEmpty
-	@Column(name="bankdetailsbranch")
-	private String bankDetailsBranch;
+	 
 	 
 	@NotEmpty
 	@Column(name="bankdetailsaccounttype")
 	private String bankDetailsAccountType;
 	
 	@NotEmpty
-	@Size(max=2000)
 	@Column(name="comments")
 	private String comments;
 		
@@ -143,7 +136,7 @@ public class CreateDonor implements Serializable{
 			String bankDetailsAccountNo, Double micr, String bankDetailsIFSCCode, String donoremail, Long donormobile,
 			Date paymentDetailsStartDate, Date paymentDetailsEndDate, Double paymentDetailsAmountInRs,
 			String paymentDetailsFrequency, String donorAddress, String donorRegion, String donorCity,
-			String donorState, String donorCenter, String bankDetailsBranch, String bankDetailsAccountType,String comments) {
+			String donorState, String donorCenter,   String bankDetailsAccountType,String comments) {
 		super();
 		this.consumerCode = consumerCode;
 		this.donorfirstname = donorfirstname;
@@ -164,8 +157,7 @@ public class CreateDonor implements Serializable{
 		this.donorRegion = donorRegion;
 		this.donorCity = donorCity;
 		this.donorState = donorState;
-		this.donorCenter = donorCenter;
-		this.bankDetailsBranch = bankDetailsBranch;
+		this.donorCenter = donorCenter;	 
 		this.bankDetailsAccountType = bankDetailsAccountType;
 	}
 
@@ -175,7 +167,7 @@ public class CreateDonor implements Serializable{
 			String bankDetailsIFSCCode, String donoremail, Long donormobile, Date paymentDetailsStartDate,
 			Date paymentDetailsEndDate, Double paymentDetailsAmountInRs, String paymentDetailsFrequency,
 			String donorAddress, String donorRegion, String donorCity, String donorState, String donorCenter,
-			String bankDetailsBranch, String bankDetailsAccountType,String comments) {
+			  String bankDetailsAccountType,String comments) {
 		super();
 		this.donorfirstname = donorfirstname;
 		this.donorlastname = donorlastname;
@@ -196,7 +188,7 @@ public class CreateDonor implements Serializable{
 		this.donorCity = donorCity;
 		this.donorState = donorState;
 		this.donorCenter = donorCenter;
-		this.bankDetailsBranch = bankDetailsBranch;
+		 
 		this.bankDetailsAccountType = bankDetailsAccountType;
 	}
 
@@ -414,14 +406,7 @@ public class CreateDonor implements Serializable{
 	}
 
 
-	public String getBankDetailsBranch() {
-		return bankDetailsBranch;
-	}
-
-
-	public void setBankDetailsBranch(String bankDetailsBranch) {
-		this.bankDetailsBranch = bankDetailsBranch;
-	}
+	 
 
 
 	public String getBankDetailsAccountType() {
@@ -445,8 +430,8 @@ public class CreateDonor implements Serializable{
 				+ paymentDetailsEndDate + ", paymentDetailsAmountInRs=" + paymentDetailsAmountInRs
 				+ ", paymentDetailsFrequency=" + paymentDetailsFrequency + ", donorAddress=" + donorAddress
 				+ ", donorRegion=" + donorRegion + ", donorCity=" + donorCity + ", donorState=" + donorState
-				+ ", donorCenter=" + donorCenter + ", bankDetailsBranch=" + bankDetailsBranch
-				+ ", bankDetailsAccountType=" + bankDetailsAccountType + ", comments=" + comments + "]";
+				+ ", donorCenter=" + donorCenter + ", bankDetailsBranch=" +  
+				  bankDetailsAccountType + ", comments=" + comments + "]";
 	}
 
 
@@ -466,3 +451,4 @@ public class CreateDonor implements Serializable{
 	
 
 }
+
