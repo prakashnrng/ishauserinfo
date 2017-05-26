@@ -1,17 +1,30 @@
 'use strict';
 var myApp = angular.module("loginApp",[]);
-myApp.controller("loginController",['$log','$scope','localService',function($log,$scope,localService){
+myApp.controller("loginController",['$log','$scope','localService','$http',function($log,$scope,localService,$http){
 	$log.log("------------Controller-----------");
 	var self = this;
 	self.registerData = {registrationFirstName:'',registrationLastName:'',registrationEmail:'',
 					registrationMobile:'',registrationPasscode:'',registrationConfirmPasscode:''};
-
+	
+	self.donar_info={ donorfirstname:"",donorlastname:"",donoremail:"",donormobile:"",donorAddress:"",
+			donorRegion:"",donorCity:"",donorState:"",donorCenter:"",
+			bankDetailsAccountHolderName:"",bankDetailsBankName:'',bankDetailsBranchName:"",bankDetailsAccountNo:"",
+			bankDetailsIFSCCode:"",micr:"",bankDetailsAccountType:"",
+			paymentDetailsStartDate:"",paymentDetailsEndDate:"",paymentDetailsAmountInRs:"",
+			paymentDetailsFrequency:"",comments:""};
+	
+	
+	self.createDonor=createDonor;
 	self.registerd = [];
 	self.SuccessMessage='';
 	self.ErrorMessage='';
 	self.DonorsList = [];
+	self.createDonor=createDonor;
+	self.successMessage = '';
+    self.errorMessage = '';
+	self.onlyNumbers = /^\d+([,.]\d+)?$/;
 	
-	
+	var url='http://localhost:6511/donar1/';
 	
 	self.register = function register(){
 		$log.log("-----Register Function-----");
@@ -47,8 +60,35 @@ myApp.controller("loginController",['$log','$scope','localService',function($log
 		
 	};
 	self.fetchDonors();
+	
+	
+	 function createDonor() {
+         console.log('create donor');
+         
+         console.log(self.donar_info);
+         localService.createDonor(self.donar_info)
+             .then(
+                 function (response) {
+                     console.log('donor created successfully');
+                     self.successMessage = 'donor created successfully';
+                     self.errorMessage='';
+                     self.done = true;
+                  /*   self.user={};*/
+                 },
+                 function (errResponse) {
+                     console.error('Error while creating donor');
+                  /*   self.errorMessage = 'Error while creating donor:' + errResponse.data.errorMessage;
+                     self.successMessage='';*/
+                 }
+             );
+     }
+         
+        
+  
+	
+	
 }]);
-myApp.directive("matchPassword", function () {
+/*myApp.directive("matchPassword", function () {
     return {
         require: "ngModel",
         scope: {
@@ -66,4 +106,4 @@ myApp.directive("matchPassword", function () {
             });
         }
     };
-});
+}); */
