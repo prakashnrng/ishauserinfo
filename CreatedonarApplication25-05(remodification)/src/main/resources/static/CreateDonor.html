@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>login</title>
+<title>Create Donor</title>
 <!-- bootstrap css files -->
 <link rel="stylesheet" href="css/bootstrap-theme.css">
 <link rel="stylesheet" href="css/bootstrap-theme.css.map">
@@ -23,12 +23,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- angularjs js file -->
 <script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="js/controller/controller.js"></script>
+<script type="text/javascript" src="js/service/service.js"></script>
 
 <!-- css files -->
 
 <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
+<body ng-app="loginApp" ng-controller="loginController as dono">
 <div class="container-fluid" >
 	<div class="row" id="toolBar">
 		<div class="col-xs-12 col-md-4" id="menuBar">
@@ -96,7 +98,7 @@
 											<li><a data-toggle="tab" href="#payment">Payment Details</a></li>
 										</ul>
 										<!-- Start of tab content -->
-									<form ng-submit="dono.submit();">
+									<form ng-submit="dono.createDonor();">
 										<div class="tab-content">
 										<!-- Start of personal details -->
 											<div id="personal" class="tab-pane fade in active">
@@ -104,75 +106,72 @@
 													<div class="col-md-6">
 														<div class="input-group input-group-lg">
 															<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user"></span></span>
-															<input type="text" class="form-control" placeholder="First Name" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donarfirstname">
+															<input type="text" class="form-control"  placeholder="First Name" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donorfirstname">
+															 
 														</div> <br>
 												
 														<div class="input-group input-group-lg">
 															<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user"></span></span>
-															<input type="text" class="form-control" placeholder="Last Name" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donarlastname"> 
+															<input type="text" class="form-control" placeholder="Last Name" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donorlastname"> 
 														</div><br>
 												
 														<div class="input-group input-group-lg">
 															<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-envelope"></span></span>
-															<input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donaremail">
+															<input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donoremail">
 														</div><br>
 												
 														<div class="input-group input-group-lg">
 															<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-phone"></span></span>
-															<input type="text" class="form-control" placeholder="Mobile" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donarmobile">
+															<input type="text" class="form-control" placeholder="Mobile" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donormobile">
 														</div><br>
 														 <div class="input-group input-group-lg">
 											                  <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-road"></span></span>
-											                  <input type="text" class="form-control"  placeholder="Address" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donarAddress">
+											                  <input type="text" class="form-control"  placeholder="Address" aria-describedby="sizing-addon1" ng-model="dono.donar_info.donorAddress">
 														</div> <br>
 													</div>
 													<div class="col-md-6">
 														<div class="input-group input-group-lg">
 															<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-asterisk"></span></span>
 															<!-- <input type="text" class="form-control"  placeholder="First Name" aria-describedby="sizing-addon1"> -->
-															<select class="form-control" ng-model="dono.donar_info.donarRegion">
+															<select class="form-control" ng-model="dono.donar_info.donorRegion">
 										                      	<option>--Region--</option>    
-										                        <option>SB</option>
-										                        <option>CA</option>
-										                        <option>SB-NRE</option>
-										                        <option>SB-NRO</option>
-										                        <option>Other</option>  
+										                        <option>Andhra Pradesh</option>
+										                        <option>Telangana</option>
 									                      	</select>
 														</div> <br>
 									                   <div class="input-group input-group-lg">
 										                  <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-tower"></span></span>
 										                      <!-- <input type="text" class="form-control"  placeholder="First Name" aria-describedby="sizing-addon1"> -->
-										                      <select class="form-control" ng-model="dono.donar_info.donarCity">
+										                      <select class="form-control" ng-model="dono.donar_info.donorCity">
 										                      	<option>--City--</option>    
-										                        <option>SB</option>
-										                        <option>CA</option>
-										                        <option>SB-NRE</option>
-										                        <option>SB-NRO</option>
-										                        <option>Other</option>  
+										                        <option>Hyderabad</option>
+										                        <option>Vijayawada</option>
+										                        <option>Vizag</option>
 										                      </select>
 									                   </div> <br>
 									                 <div class="input-group input-group-lg">
 									                  <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-bookmark"></span></span>
 									                      <!-- <input type="text" class="form-control"  placeholder="First Name" aria-describedby="sizing-addon1"> -->
-									                      <select class="form-control" ng-model="dono.donar_info.donarState">
+									                      <select class="form-control" ng-model="dono.donar_info.donorState">
 									                      	<option>--State--</option>    
-									                        <option>SB</option>
-									                        <option>CA</option>
-									                        <option>SB-NRE</option>
-									                        <option>SB-NRO</option>
-									                        <option>Other</option>  
+									                        <option>Andhra Pradesh</option>
+									                        <option>Telangana</option>
 									                      </select>
 									                   </div> <br>
 									                 <div class="input-group input-group-lg">
 									                  <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-check"></span></span>
 									                      <!--  <input type="text" class="form-control"  placeholder="First Name" aria-describedby="sizing-addon1"> --> 
-									                      <select class="form-control"  ng-model="dono.donar_info.donarCenter">
+									                      <select class="form-control"  ng-model="dono.donar_info.donorCenter">
 									                      	<option>--Center--</option>    
-									                        <option>SB</option>
-									                        <option>CA</option>
-									                        <option>SB-NRE</option>
-									                        <option>SB-NRO</option>
-									                        <option>Other</option>  
+									                        <option>Madhapur</option>
+									                        <option>Kukatpally</option>
+									                        <option>Ameerpet</option>
+									                        <option>Himayatnagar</option>
+									                        <option>Secunderabad</option>  
+									                        <option>Dilsukhnagar</option>
+									                        <option>Gachibowli</option>  
+									                        <option>Vizag</option> 
+						                                       
 									                      </select>
 									                   </div><br> 
 													</div>
@@ -185,34 +184,40 @@
 													</ul>
 												</nav>              
 											</div>
+							
+							
 										<!-- End of personal details -->
 										
 										<!-- Start of bank details -->                              
 											<div id="bank" class="tab-pane fade">
 												<div class="input-group input-group-lg">
 													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user"></span></span>
-													<input type="text" class="form-control" placeholder="Account Holder Name" aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetails.bankDetailsAccountHolderName">
+													<input type="text" class="form-control" placeholder="Account Holder Name" aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetailsAccountHolderName">
 												</div> <br>                  
 												<div class="input-group input-group-lg">
 													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-home"></span></span>
-													<input type="text" class="form-control" placeholder="Bank Name" aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetails.bankDetailsBankName">
+													<input type="text" class="form-control" placeholder="Bank Name" aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetailsBankName">
 												</div> <br>           
 												<div class="input-group input-group-lg">
 													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-th-list"></span></span>
-													<input type="text" class="form-control" placeholder="Account No." aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetails.bankDetailsAccountNo">
+													<input type="text" class="form-control" placeholder="Account No." aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetailsAccountNo">
 												</div> <br>     
 												<div class="input-group input-group-lg">
 													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-flag"></span></span>
-													<input type="text" class="form-control" placeholder="Branch" aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetails.bankDetailsBranch">
+													<input type="text" class="form-control" placeholder="Branch" aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetailsBranchName">
 												</div> <br>                         
 												<div class="input-group input-group-lg">
 													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-record"></span></span>
-													<input type="text" class="form-control" placeholder="IFSC Code" aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetails.bankDetailsIFSCCode">
+													<input type="text" class="form-control" placeholder="IFSC Code" aria-describedby="sizing-addon1" ng-model="dono.donar_info.bankDetailsIFSCCode">
+												</div> <br>  
+												<div class="input-group input-group-lg">
+													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-record"></span></span>
+													<input type="text" class="form-control" placeholder="MICR" aria-describedby="sizing-addon1" ng-model="dono.donar_info.micr">
 												</div> <br>                       
 												<div class="input-group input-group-lg">
 													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-check"></span></span>
 													<!-- <input type="text" class="form-control" placeholder="First Name" aria-describedby="sizing-addon1"> -->
-													<select class="form-control" ng-model="dono.donar_info.bankDetails.bankDetailsAccountType">
+													<select class="form-control" ng-model="dono.donar_info.bankDetailsAccountType">
 														<option>--Account Type--</option>
 														<option>SB</option>
 														<option>CA</option>
@@ -234,25 +239,30 @@
 											
 										<div class="input-group input-group-lg">
 													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
-													<input type="text"  id="datepicker1" class="form-control" placeholder="Start date" aria-describedby="sizing-addon1" ng-model="dono.donar_info.paymentDetails.paymentDetailsStartDate">
+													<input type="date"  class="form-control" placeholder="Start date" aria-describedby="sizing-addon1" ng-model="dono.donar_info.paymentDetailsStartDate">
 												</div> <br>
 												
 												 <div class="input-group input-group-lg">
 													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
-													<input type='text' id="datepicker2"  class="form-control" placeholder="End Date Date" ng-model="dono.donar_info.paymentDetails.paymentDetailsEndDate">
+													<input type='date'  class="form-control" placeholder="End Date Date" ng-model="dono.donar_info.paymentDetailsEndDate">
 												</div> <br>
 												
 											
 												<div class="input-group input-group-lg">
 													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-usd"></span></span>
-													<input type="text" class="form-control" placeholder="Amount in Rupees" aria-describedby="sizing-addon1" ng-model="dono.donar_info.paymentDetails.paymentDetailsAmountInRs">
+													<input type="text" class="form-control" placeholder="Amount in Rupees" aria-describedby="sizing-addon1" ng-model="dono.donar_info.paymentDetailsAmountInRs">
 												</div> <br>
+												<div class="input-group input-group-lg">
+													<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-usd"></span></span>
+													<input type="text" class="form-control" placeholder="comments" aria-describedby="sizing-addon1" ng-model="dono.donar_info.comments">
+												</div> <br>
+											
 											
 											
 												<div class="input-group input-group-lg">
 											      <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-check"></span></span>
 											           <!-- <input type="text" class="form-control"  placeholder="" aria-describedby="sizing-addon1"> -->
-									                      <select class="form-control" placeholder="Frequency" ng-model="dono.donar_info.paymentDetails.paymentDetailsFrequency">
+									                      <select class="form-control" placeholder="Frequency" ng-model="dono.donar_info.paymentDetailsFrequency">
 									                      	<option>--Frequency--</option>    
 									                          <option>Daily</option>
 									                          <option>Weekly</option>
@@ -270,8 +280,9 @@
 												</ul>
 											</div>
 										<!-- End of payment details -->
-									</form>
 										</div>
+								</form>
+										
 										<!-- End of tab content -->
 								</div>
 							
