@@ -3,7 +3,8 @@ myApp.factory("localService",['$http','$log','$q',function($http,$log,$q){
 	var factory = {
 			register : registration	,
 			fetchDonors : fetchDonors,
-			createDonor: createDonor
+			createDonor: createDonor,
+			updateDonor:updateDonor
 	};
 	return factory;
 	
@@ -46,7 +47,6 @@ myApp.factory("localService",['$http','$log','$q',function($http,$log,$q){
 	             function (response) {
 	            	 console.log('response block');
 	            	 console.log(donar_info);
-	            //	 loadAlldonor();
 	                 deferred.resolve(response.data);
 	             },
 	             function (errResponse) { 
@@ -55,6 +55,25 @@ myApp.factory("localService",['$http','$log','$q',function($http,$log,$q){
 	             }
 	         );
 	     return deferred.promise;
-	 }
+	 };
+	
+	   function updateDonor(donar_info){
+		 var deferred=$q.defer();
+		 console.log('-----------------updateDonor service---------------');
+		 $http.put('http://localhost:6511/donar1/',donar_info)
+		 .then(
+				 function(response){
+					 console.log('response block');
+					 console.log(donar_info);
+					 fetchDonors();
+					  deferred.resolve(response.data);
+					  },
+					  function(errResponse) {
+						  console.error('Error while updating Donor :'); 
+						  deferred.reject(errResponse);
+					  }
+				 );
+		 return deferred.promise;
+	 };
 
 }]);
