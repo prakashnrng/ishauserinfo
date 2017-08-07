@@ -17,13 +17,88 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "donordetails")
-public class Donor implements Serializable {
+public class UploadDonor implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Donor_Details_ID", nullable = false)
 	private Long id;
 
+	@Column(name = "Donor_Phone_Num", nullable = false)
+	private String mobileNumber;
+	
+	@Column(name = "Donor_Name", nullable = false)
+	private String name;
+	
+	@Column(name = "Donor_Email_id", nullable = false)
+	private String email;
+	
+
+	@Column(name = "Donor_Amount", nullable = false)
+	private Double amount;
+	
+	@Column(name = "Donor_Status")
+	private String status = "new";
+	
+	
+	@Column(name = "Donor_Region")
+	private String region;
+
+	@Column(name = "Donor_State")
+	private String state;
+	
+	@Column(name = "Donor_City")
+	private String city;
+	
+	@Column(name = "Donor_Center")
+	private String center;
+	
+	
+
+	@Column(name = "Bank_Acct_Holder_Name", nullable = false)
+	private String bankAccountholderName;
+	
+
+	@Column(name = "Bank_Name")
+	private String bankName;
+	
+	@Column(name = "Bank_Branch")
+	private String branchName;
+	
+	@Column(name = "Bank_Acct_Num", nullable = false)
+	private String bankAccountNumber;
+	
+	@Column(name = "Bank_MICR")
+	private int bankMICR;
+
+	@Column(name = "Bank_IFSC_Cd")
+	private String bankIfscCode;
+	
+	
+	@Column(name = "Bank_Acct_Type", nullable = false)
+	private String bankAccountType;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "Donation_Start_Dt", nullable = false)
+	private Date startDate;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "Donation_End_Dt", nullable = false)
+	private Date endDate;
+
+	@Column(name = "Donation_Frequency", nullable = false)
+	private String frequency;
+
+	@Column(name = "TPPS_Consumer_Code")
+	private String TPPSConsumerCode;
+	
+	
+	@Column(name = "Create_Dt", nullable = false)
+	private String createDate;
+	
+	@Column(name = "Update_Comments")
+	private String comments;
+	
 	public Long getDonorId() {
 		return id;
 	}
@@ -32,16 +107,15 @@ public class Donor implements Serializable {
 		this.id = id;
 	}
 
-	public Donor(Long id) {
+	public UploadDonor(Long id) {
 		this.id = id;
 	}
 
-	public Donor() {
+	public UploadDonor() {
 
 	}
 
-	@Column(name = "Donor_Phone_Num", nullable = false)
-	private String mobileNumber;
+	
 
 	public String getDonorPhoneNumber() {
 		return mobileNumber;
@@ -51,8 +125,7 @@ public class Donor implements Serializable {
 		this.mobileNumber = mobileNumber;
 	}
 
-	@Column(name = "Donor_Name", nullable = false)
-	private String name;
+	
 
 	public String getDonorName() {
 		return name;
@@ -62,8 +135,7 @@ public class Donor implements Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "Donor_Email_id", nullable = false)
-	private String email;
+	
 
 	public String getDonorEmail() {
 		return email;
@@ -73,8 +145,6 @@ public class Donor implements Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "Donor_Amount", nullable = false)
-	private Double amount;
 
 	public Double getAmount() {
 		return amount;
@@ -99,8 +169,6 @@ public class Donor implements Serializable {
 	 * public void setDonorRefName2(String refName2) { this.refName2 = refName2;
 	 * }
 	 */
-	@Column(name = "Donor_Status")
-	private String status = "new";
 
 	public String getDonorStatus() {
 		return status;
@@ -110,8 +178,7 @@ public class Donor implements Serializable {
 		this.status = status;
 	}
 
-	@Column(name = "Donor_Region")
-	private String region;
+	
 
 	public String getDonorRegion() {
 		return region;
@@ -121,8 +188,7 @@ public class Donor implements Serializable {
 		this.region = region;
 	}
 
-	@Column(name = "Donor_State")
-	private String state;
+	
 
 	public String getDonorState() {
 		return state;
@@ -132,8 +198,7 @@ public class Donor implements Serializable {
 		this.state = state;
 	}
 
-	@Column(name = "Donor_City")
-	private String city;
+	
 
 	public String getDonorCity() {
 		return city;
@@ -143,8 +208,7 @@ public class Donor implements Serializable {
 		this.city = city;
 	}
 
-	@Column(name = "Donor_Center")
-	private String center;
+	
 
 	public String getCenter() {
 		return center;
@@ -165,8 +229,6 @@ public class Donor implements Serializable {
 
 	
 
-	@Column(name = "Bank_Acct_Holder_Name", nullable = false)
-	private String bankAccountholderName;
 
 	public String getBankAccountholderName() {
 		return bankAccountholderName;
@@ -176,8 +238,6 @@ public class Donor implements Serializable {
 		this.bankAccountholderName = bankAccountholderName;
 	}
 
-	@Column(name = "Bank_Name")
-	private String bankName;
 
 	public String getBankName() {
 		return bankName;
@@ -187,8 +247,7 @@ public class Donor implements Serializable {
 		this.bankName = bankName;
 	}
 
-	@Column(name = "Bank_Branch")
-	private String branchName;
+	
 
 	public String getBankBranch() {
 		return branchName;
@@ -198,8 +257,7 @@ public class Donor implements Serializable {
 		this.branchName = branchName;
 	}
 
-	@Column(name = "Bank_Acct_Num", nullable = false)
-	private String bankAccountNumber;
+	
 
 	public String getBankAccountNumber() {
 		return bankAccountNumber;
@@ -209,9 +267,7 @@ public class Donor implements Serializable {
 		this.bankAccountNumber = bankAccountNumber;
 	}
 
-	@Column(name = "Bank_MICR")
-	private int bankMICR;
-
+	
 	public int getBankMICR() {
 		return bankMICR;
 	}
@@ -220,8 +276,7 @@ public class Donor implements Serializable {
 		this.bankMICR = bankMICR;
 	}
 
-	@Column(name = "Bank_IFSC_Cd")
-	private String bankIfscCode;
+	
 
 	public String getBankIfscCode() {
 		return bankIfscCode;
@@ -231,8 +286,7 @@ public class Donor implements Serializable {
 		this.bankIfscCode = bankIfscCode;
 	}
 
-	@Column(name = "Bank_Acct_Type", nullable = false)
-	private String bankAccountType;
+	
 
 	public String getBankAccountType() {
 		return bankAccountType;
@@ -269,10 +323,7 @@ public class Donor implements Serializable {
 	 * public void setBankUtilityCode(String bankUtilityCode) {
 	 * this.bankUtilityCode = bankUtilityCode; }
 	 */
-	@Temporal(TemporalType.DATE)
-	@Column(name = "Donation_Start_Dt", nullable = false)
-	private Date startDate;
-
+	
 	public Date getDonationStartDate() {
 		return startDate;
 	}
@@ -281,9 +332,7 @@ public class Donor implements Serializable {
 		this.startDate = startDate;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "Donation_End_Dt", nullable = false)
-	private Date endDate;
+	
 
 	public Date getDonationEndDate() {
 		return endDate;
@@ -293,9 +342,7 @@ public class Donor implements Serializable {
 		this.endDate = endDate;
 	}
 
-	@Column(name = "Donation_Frequency", nullable = false)
-	private String frequency;
-
+	
 	public String getDonationFrequency() {
 		return frequency;
 	}
@@ -313,8 +360,7 @@ public class Donor implements Serializable {
 	 * debitType; }
 	 */
 
-	@Column(name = "TPPS_Consumer_Code")
-	private String TPPSConsumerCode;
+	
 
 	public String getTppsConsumerCode() {
 		return TPPSConsumerCode;
@@ -324,8 +370,7 @@ public class Donor implements Serializable {
 		this.TPPSConsumerCode = TPPSConsumerCode;
 	}
 
-	@Column(name = "Create_Dt", nullable = false)
-	private String createDate;
+	
 
 	public String getCreateDonordate() {
 		return createDate;
@@ -361,8 +406,7 @@ public class Donor implements Serializable {
 	 * public void setUpdaterName(String updatedBy) { this.updatedBy =
 	 * updatedBy; }
 	 */
-	@Column(name = "Update_Comments")
-	private String comments;
+	
 
 	public String getDonorComments() {
 		return comments;

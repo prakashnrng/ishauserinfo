@@ -248,10 +248,15 @@
 				<span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-th-list"></span></span>
 				<input type="text" class="form-control" placeholder="Create By" aria-describedby="sizing-addon1" ng-model="ctrl.donar_info.creatorName">
 			</div> <br>
-			
+			 
 		<label>Comments</label>	
-		<textarea class="form-control" rows="3" columns="3" resize="none" ng-model="ctrl.donar_info.donorComments"></textarea>
+		<div class="input-group input-group-md">
+	<!-- 	<input type="text" class="form-control" placeholder="comments" aria-describedby="sizing-addon1" ng-model="ctrl.donar_info.donorComments"></p> -->
+		 <textarea class="form-control" rows="3" columns="3" resize="none" id="comment"    ng-model="ctrl.donar_info.donorComments"></textarea>
+		 </div>
+		<!-- <textarea class="form-control" rows="3" columns="3" resize="none" ng-model="ctrl.donar_info.donorComments"></textarea> -->
 		<br>
+		 
 		
 		<label>Frequency</label>	
 			<div class="input-group input-group-md">

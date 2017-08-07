@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.isha.donation.DAO.IshaDonorDao;
+import com.isha.donation.DAO.UploadDAO;
 import com.isha.donation.entity.Donor;
+import com.isha.donation.entity.UploadDonor;
 
 
 @Service("ishaDonorService")
@@ -17,11 +19,18 @@ public class IshaDonorServiceImpl implements IshaDonorService{
 	
 	 @Autowired
 	 private IshaDonorDao ishaDonorDao;
+	 
+	 @Autowired
+	 private UploadDAO uploadDAO;
 	
 	@Override
-	public List<Donor> findAllDonor() {
+	public List<Donor> findAllDonor(String status) {
 	 
-		return ishaDonorDao.findAllDonor();
+		return ishaDonorDao.findAllDonor(status);
 	}
 
+	
+	public void saveUploadedDonor(UploadDonor uploadonor){
+		uploadDAO.saveUploadedDonor(uploadonor);
+	}
 }

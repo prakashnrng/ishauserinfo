@@ -17,6 +17,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.isha.donation.IdGeneration.CompositeId;
+import com.isha.donation.excelhead.ExcelColumn;
 
  
 
@@ -29,6 +30,12 @@ public class HibernateConfiguration {
 	@Bean
 	public CompositeId getCompositeId(){
 		return new CompositeId();
+	}
+	
+	
+	@Bean
+	public ExcelColumn getColumn(){
+		return new ExcelColumn();
 	}
 	
 	static{

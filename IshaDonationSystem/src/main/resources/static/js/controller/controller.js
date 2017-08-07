@@ -113,9 +113,10 @@ myApp.controller("loginController",['$log','$scope','localService','$http','$res
 	
 	self.createDonor =  function createDonor() {
         console.log('create donor');
+        console.log(self.donor_info)
        
         console.log(self.donor_info);
-        localService.createDonor(self.donor_info)
+       /* localService.createDonor(self.donor_info)
             .then(
                 function (response) {
                     console.log('donor created successfully');
@@ -125,16 +126,16 @@ myApp.controller("loginController",['$log','$scope','localService','$http','$res
                     self.reload();
                     self.errorMessage='';
                     self.done = true;
-                 /*   self.user={};*/
+                    self.user={};
                 },
                 function (errResponse) {
                     console.error('Error while creating donor');
                     alert('Error while creating Donor');
                  
-                 /*   self.errorMessage = 'Error while creating donor:' + errResponse.data.errorMessage;
-                    self.successMessage='';*/
+                    self.errorMessage = 'Error while creating donor:' + errResponse.data.errorMessage;
+                    self.successMessage='';
                 }
-            );
+            );*/
     };
      self.update = function update(id){
     	var   List = $resource("http://localhost:8080/updatedonor/:id",{},{save:{method:'PUT',params:{id:'@id'}}});
@@ -180,6 +181,7 @@ myApp.controller("loginController",['$log','$scope','localService','$http','$res
 		}
 	}
 	self.selectContact = function(index){
+		console.log(index)
 		self.selectedContact = self.DonorsList[index];
 		/*$log.log( self.selectedContact);*/
 		self.StartDate = new Date(self.selectedContact.donationStartDate);
